@@ -2,7 +2,6 @@
 
 ![Power BI](https://shields.io)
 ![MySQL](https://shields.io)
-![Markdown](https://shields.io)
 
 ## 📌 Contexto del Proyecto
 En el entorno actual del comercio digital (Marketplace), la dispersión de datos transaccionales dificulta la toma de decisiones estratégicas en tiempo real. Este proyecto resuelve la falta de visibilidad comercial mediante el desarrollo de una solución analítica centralizada (Business Intelligence), permitiendo a los directores comerciales monitorear el rendimiento del negocio, identificar categorías líderes y optimizar las operaciones financieras y regionales.
