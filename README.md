@@ -9,7 +9,7 @@ Se diseñó e implementó un dashboard interactivo de punta a punta que transfor
 
 La arquitectura de la solución incluye:
 1. **Extracción y Almacenamiento:** Carga, limpieza y optimización del dataset transaccional (*Online Sales Dataset*) dentro de un servidor local **MySQL**.
-2. **Modelado de Datos:** Conexión directa desde **Power BI** en modo **Import**, con una tabla de ventas, una tabla calendario para el análisis temporal y una tabla de medidas.
+2. **Modelado de datos:** **Power BI** importa la tabla de ventas desde MySQL y la acompaña con una tabla calendario para el análisis temporal y una tabla de medidas.
 3. **Modelado Temporal:** Creación e implementación de la tabla calendario `calc_calendario` en **DAX** para habilitar análisis cronológicos estables.
 4. **Capa de Métricas (DAX):** Desarrollo de cálculos y KPIs comerciales clave centralizados en una tabla exclusiva de medidas.
 
