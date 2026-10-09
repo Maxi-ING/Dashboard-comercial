@@ -1,23 +1,43 @@
-# Dashboard Comercial y Control de Ventas | Power BI & MySQL
+# Dashboard comercial | Control de ventas
 
+**Power BI · DAX · MySQL**
 
-## Contexto del Proyecto
-En el entorno actual del comercio digital (Marketplace), la dispersión de datos transaccionales dificulta el seguimiento y análisis del rendimiento comercial. Este proyecto resuelve la falta de visibilidad comercial mediante el desarrollo de una solución analítica centralizada (Business Intelligence), permitiendo a los directores comerciales monitorear el rendimiento del negocio, identificar categorías líderes y optimizar las operaciones financieras y regionales.
+**Organicé las ventas en un dashboard que permite identificar categorías líderes, comparar regiones y revisar la evolución mensual.** Electronics concentra el mayor ingreso y Credit Card reúne el mayor importe por método de pago. Estos hallazgos orientan dónde profundizar el análisis comercial.
 
-## Solución Desarrollada
-Se diseñó e implementó un dashboard interactivo de punta a punta que transforma datos crudos en insights accionables, reduciendo el tiempo de interpretación de reportes para los tomadores de decisiones.
+El caso utiliza **240 pedidos y 518 unidades**, con **80.567,85 unidades monetarias** de ventas registradas entre el **1 de enero y el 27 de agosto de 2024**. MySQL almacena los datos y Power BI los presenta mediante indicadores, gráficos y un filtro de región.
 
-La arquitectura de la solución incluye:
-1. **Extracción y Almacenamiento:** Carga, limpieza y optimización del dataset transaccional (*Online Sales Dataset*) dentro de un servidor local **MySQL**.
-2. **Modelado de datos:** **Power BI** importa la tabla de ventas desde MySQL y la acompaña con una tabla calendario para el análisis temporal y una tabla de medidas.
-3. **Modelado Temporal:** Creación e implementación de la tabla calendario `calc_calendario` en **DAX** para habilitar análisis cronológicos estables.
-4. **Capa de Métricas (DAX):** Desarrollo de cálculos y KPIs comerciales clave centralizados en una tabla exclusiva de medidas.
+## Qué responde el dashboard
 
-## Indicadores Clave de Rendimiento (KPIs) Implementados
-* **Ventas Totales:** Medición de ingresos brutos acumulados utilizando la agregación monetaria final de cada orden.
-* **Unidades Vendidas:** Control del volumen físico de productos distribuidos en el inventario.
-* **Total Pedidos:** Monitoreo operativo del volumen de transacciones únicas procesadas en la plataforma (`DISTINCTCOUNT`).
+| Pregunta | Resultado observado | Qué revisaría |
+|---|---|---|
+| ¿Qué categoría genera más ingresos? | **Electronics: 34.982,41**, seguida de Home Appliances. | Disponibilidad y composición de los productos destacados. |
+| ¿Qué método de pago concentra las ventas? | **Credit Card: 63,51 %** del importe total. | Continuidad operativa de ese medio de pago. |
+| ¿Cómo evolucionan las ventas? | Enero registra **14.548,32**; julio, **6.797,08**, el menor importe mensual del período. | La composición por categoría y región antes de atribuir causas. |
+| ¿Cómo cambia el resultado por región? | El filtro permite explorar North America, Europe y Asia. | Diferencias de ventas y categorías dentro de cada región. |
 
-## Estructura Técnica del Modelo
-* **Origen de datos:** Tabla `ventas_raw` de una base MySQL local (`localhost`), cargada en Power BI mediante modo **Import**. Los cambios en la fuente se reflejan después de actualizar el modelo.
-* **Tablas del modelo:** `control_ventas ventas_raw` contiene las transacciones; `calc_calendario` organiza el análisis por fecha; `_medidas` reúne los indicadores DAX.
+Son propuestas de revisión a partir de los datos; el informe no demuestra aumentos de ventas ni ahorro de tiempo.
+
+## Evidencia del informe
+
+La vista general reúne ventas por categoría, participación de pagos, tendencia mensual y los indicadores de ventas, unidades y pedidos.
+
+![Dashboard de control y rendimiento comercial](dashboardvista.png)
+
+La captura está en `dashboardvista.png`; el informe para explorar está en `Dashboard comercial.pbix`.
+
+## Cómo preparé el análisis
+
+Cargué los datos en la tabla `ventas_raw` de MySQL y la importé en Power BI. Añadí el calendario `calc_calendario` para organizar las fechas y centralicé los indicadores DAX en `_medidas`.
+
+El modelo utiliza una tabla de ventas, un calendario y una tabla de medidas. La conexión funciona en modo **Import**: los cambios de MySQL se reflejan al actualizar el informe.
+
+## Dónde encontrar cada parte
+
+| Archivo o carpeta | Contenido |
+|---|---|
+| `Dashboard comercial.pbix` | Informe interactivo de Power BI. |
+| `dashboardvista.png` | Captura de la vista general. |
+| `dbventas2024.sql` | Estructura y datos de la tabla de ventas. |
+| `docs/reproduccion.md` | Pasos para abrir el informe y conectar tu MySQL. |
+
+Los importes representan ingresos registrados, no beneficios. La comparación mensual corresponde al período disponible, con agosto hasta el día 27. La documentación original identifica la fuente como *Online Sales Dataset*; el SQL no especifica divisa.
